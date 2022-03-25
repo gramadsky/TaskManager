@@ -3,27 +3,19 @@ package by.gramadsky.task_manager.model;
 public class OneTimeTask extends Task {
 
     private String dateOfCompletion;
-    private String priority;
+    private PriorityLevel priority;
 
-    public OneTimeTask(String title, String category, String dateOfCompletion, String priority) {
+    public OneTimeTask(String title, CategoryOptions category, String dateOfCompletion, PriorityLevel priority) {
         super(title, category);
         this.dateOfCompletion = dateOfCompletion;
         this.priority = priority;
-    }
-
-    public String getPurchase() {
-        return dateOfCompletion;
-    }
-
-    public String getWish() {
-        return priority;
     }
 
     @Override
     public String toString() {
         return super.toString() +
                 "DateOfCompletion: " + dateOfCompletion + "\r\n" +
-                "Priority: " + priority + "\r\n";
+                "Priority: " + priority.toString().toLowerCase() + "\r\n";
 
     }
 

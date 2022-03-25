@@ -5,7 +5,7 @@ public class RepeatableTask extends Task {
     private int howManyTimesAWeek;
     private int howLong;
 
-    public RepeatableTask(String title, String category, int howManyTimesAWeek, int howLong) {
+    public RepeatableTask(String title, CategoryOptions category, int howManyTimesAWeek, int howLong) {
 
         super(title, category);
         this.howManyTimesAWeek = howManyTimesAWeek;
