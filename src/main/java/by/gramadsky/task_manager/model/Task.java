@@ -3,17 +3,17 @@ package by.gramadsky.task_manager.model;
 public abstract class Task implements Completable {
 
     private String title;
-    private String category;
+    private CategoryOptions category;
 
     public String getTitle() {
         return title;
     }
 
-    public String getCategory() {
+    public CategoryOptions getCategory() {
         return category;
     }
 
-    protected Task(String title, String category) {
+    protected Task(String title, CategoryOptions category) {
         this.title = title;
         this.category = category;
     }
