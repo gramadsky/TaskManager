@@ -5,6 +5,10 @@ public class User<T> {
     private int age;
     private T id;
 
+    public User() {
+    }
+
+
     public void setId(T id) {
         this.id = id;
     }
@@ -30,7 +34,8 @@ public class User<T> {
         private User newUser;
 
         public Builder() {
-            newUser = new User("bbq1120");
+
+            newUser = new User();
         }
 
         public Builder setName(String name) {

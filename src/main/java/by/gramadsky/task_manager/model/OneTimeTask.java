@@ -5,6 +5,25 @@ public class OneTimeTask extends Task {
     private String dateOfCompletion;
     private PriorityLevel priority;
 
+    public OneTimeTask() {
+    }
+
+    public void setDateOfCompletion(String dateOfCompletion) {
+        this.dateOfCompletion = dateOfCompletion;
+    }
+
+    public void setPriority(PriorityLevel priority) {
+        this.priority = priority;
+    }
+
+    public String getDateOfCompletion() {
+        return dateOfCompletion;
+    }
+
+    public PriorityLevel getPriority() {
+        return priority;
+    }
+
     public OneTimeTask(String title, CategoryOptions category, String dateOfCompletion, PriorityLevel priority) {
         super(title, category);
         this.dateOfCompletion = dateOfCompletion;
