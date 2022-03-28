@@ -5,6 +5,17 @@ public abstract class Task implements Completable {
     private String title;
     private CategoryOptions category;
 
+    protected Task() {
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setCategory(CategoryOptions category) {
+        this.category = category;
+    }
+
     public String getTitle() {
         return title;
     }
