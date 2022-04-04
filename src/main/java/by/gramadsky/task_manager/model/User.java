@@ -8,9 +8,20 @@ public class User<T> {
     public User() {
     }
 
-
     public void setId(T id) {
         this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public T getId() {
@@ -22,6 +33,7 @@ public class User<T> {
     }
 
 
+
     @Override
     public String toString() {
         return "User: \r\n" +
@@ -29,6 +41,7 @@ public class User<T> {
                 "age = " + age + "\r\n" +
                 "id = " + id + "\r\n";
     }
+
 
     public static class Builder {
         private User newUser;
@@ -51,5 +64,8 @@ public class User<T> {
         public User build() {
             return newUser;
         }
+
     }
+
+
 }
