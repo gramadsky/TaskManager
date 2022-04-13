@@ -1,12 +1,12 @@
 package by.gramadsky.task_manager.app;
 
-import by.gramadsky.task_manager.db.DB;
 import by.gramadsky.task_manager.model.*;
-import by.gramadsky.task_manager.util.TaskCreator;
+import by.gramadsky.task_manager.util.TaskUtility;
 
 import java.util.*;
 
-import static by.gramadsky.task_manager.db.DB.taskList;
+import static by.gramadsky.task_manager.util.TaskUtility.taskList;
+
 
 public class App {
 
@@ -36,48 +36,38 @@ public class App {
                 .build();
         user.setId(343);
 
-        System.out.println("Hello, enter you name: ");
-        String nameUser = Scanner.nextLine();
+        System.out.println("Hello " + user.getName() + ", please enter your password: ");
+        String password = Scanner.nextLine();
 
-        while (!nameUser.equals("Tom")) {
-            System.out.println("Invalid name, try again: ");
-            nameUser = Scanner.nextLine();
+        while (!password.equals("123456")) {
+            System.out.println("Invalid password, try again: ");
+            password = Scanner.nextLine();
         }
-        System.out.println("Greatest, Tom!");
+        System.out.println("Greatest, " + user.getName() + "!");
+
         boolean continueProgram = true;
 
         while (continueProgram) {
-            System.out.println(new StringBuilder()
-                    .append("If you want to:  - see your to-do list, press 1 \n")
-                    .append("                 - add a task, press 2 \n")
-                    .append("                 - sort a task, press 3 \n")
-                    .append("                 - stop a program, press 4"));
-
+            TaskUtility.printMenu();
             int number = Scanner.nextInt();
+
             switch (number) {
                 case 1:
-                    DB.printAllTasks();
+                    TaskUtility.printAllTasks();
                     break;
                 case 2:
-                    System.out.println("What the task you want? 1 - One time task 2 - Repeatable task");
-
-                    int numb = Scanner.nextInt();
-
-                    if (numb == 1) {
-                        TaskCreator.createOneTimeTask();
-                    }
-                    if (numb == 2) {
-                        TaskCreator.createRepeatableTask();
-                    } else {
-                        System.out.println("Invalid input");
-                    }
-                    System.out.println("Your to-do list is now: ");
-                    DB.printAllTasks();
+                    TaskUtility.addTask();
                     break;
                 case 3:
-                    DB.sorted();
+                    TaskUtility.sorted();
                     break;
                 case 4:
+                    TaskUtility.filtered();
+                    break;
+                case 5:
+                    TaskUtility.printTitle();
+                    break;
+                case 6:
                     continueProgram = false;
                     break;
                 default:
