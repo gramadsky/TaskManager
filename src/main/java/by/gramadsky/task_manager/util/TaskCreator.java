@@ -4,9 +4,10 @@ import by.gramadsky.task_manager.model.OneTimeTask;
 import by.gramadsky.task_manager.model.PriorityLevel;
 import by.gramadsky.task_manager.model.RepeatableTask;
 
+
 import java.util.Scanner;
 
-import static by.gramadsky.task_manager.db.DB.taskList;
+import static by.gramadsky.task_manager.util.TaskUtility.taskList;
 
 
 public class TaskCreator {
@@ -14,23 +15,37 @@ public class TaskCreator {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void createOneTimeTask() {
-        System.out.println("Create new one time task task!");
+        System.out.println("Create new one time task!");
         OneTimeTask newTask = new OneTimeTask();
         newTask.setTitle(getTitleFromUser());
-        newTask.setDate(getDate());
         newTask.setCategory(getCategory());
+        newTask.setDate(getDate());
         newTask.setPriority(PriorityLevel.valueOf(getPriorityLevel()));
-        taskList.add(newTask);
+
+        boolean b = taskList.stream()
+                .anyMatch(task -> task.equals(newTask));
+        if (!b) {
+            taskList.add(newTask);
+        } else {
+            System.out.println("This task already exists!");
+        }
     }
 
     public static void createRepeatableTask() {
         System.out.println("Create new repeatable task!");
         RepeatableTask newTask = new RepeatableTask();
         newTask.setTitle(getTitleFromUser());
-        newTask.setDate(getDate());
         newTask.setCategory(getCategory());
+        newTask.setDate(getDate());
         newTask.setPeriodicity(getPeriodicity());
-        taskList.add(newTask);
+
+        boolean b = taskList.stream()
+                .anyMatch(task -> task.equals(newTask));
+        if (!b) {
+            taskList.add(newTask);
+        } else {
+            System.out.println("This task already exists!");
+        }
     }
 
 

@@ -1,6 +1,5 @@
 package by.gramadsky.task_manager.model;
 
-import java.util.Objects;
 
 public abstract class Task implements Completable, Comparable<Task> {
 
@@ -24,8 +23,8 @@ public abstract class Task implements Completable, Comparable<Task> {
         return category;
     }
 
-    public void setCategory(CategoryOptions category) {
-        this.category = category;
+    public void setCategory(String category) {
+        this.category = CategoryOptions.valueOf(category);
     }
 
     public String getDate() {
@@ -52,8 +51,5 @@ public abstract class Task implements Completable, Comparable<Task> {
         return getDate().compareTo(task.getDate());
     }
 
-    public void setCategory(String category) {
-        this.category = CategoryOptions.valueOf(category);
 
-    }
 }
