@@ -12,6 +12,26 @@ import static by.gramadsky.task_manager.model.CategoryOptions.PERSONAL;
 
 public class TaskUtility {
 
+    public static Set<Task> taskList = new HashSet<>();
+
+    public static void userTasks() {
+        OneTimeTask carRepair = new OneTimeTask("car repair", CategoryOptions.WORK,
+                "20.03", PriorityLevel.VERY_IMPORTANT);
+        taskList.add(carRepair);
+
+        OneTimeTask theaterVisit = new OneTimeTask("theater visit", CategoryOptions.PERSONAL,
+                "29.03", PriorityLevel.MEDIUM);
+        taskList.add(theaterVisit);
+
+        OneTimeTask buyPresent = new OneTimeTask("buy present", CategoryOptions.HOME,
+                "22.03", PriorityLevel.MEDIUM);
+        taskList.add(buyPresent);
+
+        RepeatableTask training = new RepeatableTask("training", CategoryOptions.PERSONAL,
+                "10.03", 3);
+        taskList.add(training);
+    }
+
     public static void printMenu() {
         System.out.println(new StringBuilder()
                 .append("If you want to: 1 - see your to-do list \n")
@@ -21,8 +41,6 @@ public class TaskUtility {
                 .append("                5 - see Title a task \n")
                 .append("                6 - stop a program"));
     }
-
-    public static Set<Task> taskList = new HashSet<>();
 
     public static void printAllTasks() {
         taskList.forEach(System.out::println);
@@ -64,5 +82,4 @@ public class TaskUtility {
                 .forEach(System.out::println);
 
     }
-
 }

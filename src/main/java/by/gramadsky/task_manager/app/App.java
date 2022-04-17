@@ -1,49 +1,26 @@
 package by.gramadsky.task_manager.app;
 
-import by.gramadsky.task_manager.model.*;
 import by.gramadsky.task_manager.util.TaskUtility;
+import by.gramadsky.task_manager.util.UserCreator;
 
 import java.util.*;
-
-import static by.gramadsky.task_manager.util.TaskUtility.taskList;
-
 
 public class App {
 
     public static void main(String[] args) {
 
-        OneTimeTask carRepair = new OneTimeTask("car repair", CategoryOptions.WORK,
-                "20.03", PriorityLevel.VERY_IMPORTANT);
-        taskList.add(carRepair);
-
-        OneTimeTask theaterVisit = new OneTimeTask("theater visit", CategoryOptions.PERSONAL,
-                "29.03", PriorityLevel.MEDIUM);
-        taskList.add(theaterVisit);
-
-        OneTimeTask buyPresent = new OneTimeTask("buy present", CategoryOptions.HOME,
-                "22.03", PriorityLevel.MEDIUM);
-        taskList.add(buyPresent);
-
-        RepeatableTask training = new RepeatableTask("training", CategoryOptions.PERSONAL,
-                "10.03", 3);
-        taskList.add(training);
-
         Scanner Scanner = new Scanner(System.in);
 
-        User<Integer> user = new User.Builder()
-                .setName("Tom")
-                .setAge(33)
-                .build();
-        user.setId(343);
+        TaskUtility.userTasks();
 
-        System.out.println("Hello " + user.getName() + ", please enter your password: ");
+        UserCreator.createUser();
+
         String password = Scanner.nextLine();
-
         while (!password.equals("123456")) {
             System.out.println("Invalid password, try again: ");
             password = Scanner.nextLine();
         }
-        System.out.println("Greatest, " + user.getName() + "!");
+        System.out.println("Greatest!!!");
 
         boolean continueProgram = true;
 
