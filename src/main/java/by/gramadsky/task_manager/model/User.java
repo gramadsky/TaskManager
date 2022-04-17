@@ -24,6 +24,10 @@ public class User<T> {
         return name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public T getId() {
         return id;
     }
@@ -31,7 +35,6 @@ public class User<T> {
     public User(T id) {
         this.id = id;
     }
-
 
 
     @Override
