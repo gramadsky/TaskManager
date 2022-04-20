@@ -24,7 +24,6 @@ public class UserCreator {
             password = SCANNER.nextLine();
         }
         System.out.println("Greatest!!!");
-
     }
 
     public static String getNameFromUser() {
