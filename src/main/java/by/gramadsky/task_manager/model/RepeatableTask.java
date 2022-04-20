@@ -1,12 +1,14 @@
 package by.gramadsky.task_manager.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class RepeatableTask extends Task {
+public class RepeatableTask extends Task implements Serializable {
 
     private int periodicity;
 
-    public RepeatableTask(String title, CategoryOptions category, String date, int periodicity) {
+    public RepeatableTask(String title, CategoryOptions category, LocalDate date, int periodicity) {
         super(title, category, date);
         this.periodicity = periodicity
         ;
@@ -42,7 +44,7 @@ public class RepeatableTask extends Task {
     @Override
     public String toString() {
         return super.toString() +
-                "periodicity: " + periodicity + "\n";
+                "periodicity: " + periodicity;
     }
 
     @Override

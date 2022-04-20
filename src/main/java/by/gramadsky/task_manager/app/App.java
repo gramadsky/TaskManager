@@ -3,24 +3,21 @@ package by.gramadsky.task_manager.app;
 import by.gramadsky.task_manager.util.TaskUtility;
 import by.gramadsky.task_manager.util.UserCreator;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class App {
 
     public static void main(String[] args) {
+      
+        TaskUtility.load();
 
         Scanner Scanner = new Scanner(System.in);
 
-        TaskUtility.userTasks();
+        LocalDate today = LocalDate.now();
+        System.out.println("Hello! Today is " + today + ".");
 
-        UserCreator.createUser();
-
-        String password = Scanner.nextLine();
-        while (!password.equals("123456")) {
-            System.out.println("Invalid password, try again: ");
-            password = Scanner.nextLine();
-        }
-        System.out.println("Greatest!!!");
+        UserCreator.createUser(
 
         boolean continueProgram = true;
 
@@ -50,6 +47,8 @@ public class App {
                 default:
                     System.out.println("Invalid input");
             }
+
+            TaskUtility.save();
         }
     }
 }

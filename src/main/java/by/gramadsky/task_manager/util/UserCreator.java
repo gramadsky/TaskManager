@@ -11,12 +11,19 @@ public class UserCreator {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void createUser() {
-        System.out.println("Hello! Enter your details");
+        System.out.println("Enter your details");
         User<Integer> newUser = new User<>();
         newUser.setName(getNameFromUser());
         newUser.setAge(getAgeFromUser());
         newUser.setId(getIdFromUser());
         System.out.println("Hello " + newUser.getName() + ", please enter your password: ");
+
+        String password = SCANNER.nextLine();
+        while (!password.equals("123456")) {
+            System.out.println("Invalid password, try again: ");
+            password = SCANNER.nextLine();
+        }
+        System.out.println("Greatest!!!");
     }
 
     public static String getNameFromUser() {
