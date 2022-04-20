@@ -2,35 +2,17 @@ package by.gramadsky.task_manager.util;
 
 import by.gramadsky.task_manager.model.*;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
 
 import static by.gramadsky.task_manager.model.CategoryOptions.PERSONAL;
 
 
 public class TaskUtility {
 
+    public static final String FILE = "tasks.txt";
+
     public static Set<Task> taskList = new HashSet<>();
-
-    public static void userTasks() {
-        OneTimeTask carRepair = new OneTimeTask("car repair", CategoryOptions.WORK,
-                "20.03", PriorityLevel.VERY_IMPORTANT);
-        taskList.add(carRepair);
-
-        OneTimeTask theaterVisit = new OneTimeTask("theater visit", CategoryOptions.PERSONAL,
-                "29.03", PriorityLevel.MEDIUM);
-        taskList.add(theaterVisit);
-
-        OneTimeTask buyPresent = new OneTimeTask("buy present", CategoryOptions.HOME,
-                "22.03", PriorityLevel.MEDIUM);
-        taskList.add(buyPresent);
-
-        RepeatableTask training = new RepeatableTask("training", CategoryOptions.PERSONAL,
-                "10.03", 3);
-        taskList.add(training);
-    }
 
     public static void printMenu() {
         System.out.println(new StringBuilder()
@@ -38,12 +20,13 @@ public class TaskUtility {
                 .append("                2 - add a task \n")
                 .append("                3 - sort a task \n")
                 .append("                4 - filter a task \n")
-                .append("                5 - see Title a task \n")
+                .append("                5 - see title a task \n")
                 .append("                6 - stop a program"));
     }
 
     public static void printAllTasks() {
-        taskList.forEach(System.out::println);
+        taskList.forEach(task -> System.out.println(task + ", deadline: " + task.periodMonths() + " months and " +
+                task.periodDays() + " days" + "\n"));
     }
 
     public static void addTask() {
@@ -80,6 +63,17 @@ public class TaskUtility {
         taskList.stream()
                 .map(task -> task.getTitle())
                 .forEach(System.out::println);
+    }
 
+    public static void save() {
+        SerializationUtil.serialize(FILE, taskList);
+    }
+
+
+    public static void load() {
+        Optional<Object> deserialize = SerializationUtil.deserialize(FILE);
+        if (deserialize.isPresent() && deserialize.get() instanceof Set) {
+            taskList = (Set<Task>) deserialize.get();
+        }
     }
 }

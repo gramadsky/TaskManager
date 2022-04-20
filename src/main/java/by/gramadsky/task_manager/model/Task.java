@@ -1,15 +1,29 @@
 package by.gramadsky.task_manager.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Period;
 
-public abstract class Task implements Completable, Comparable<Task> {
+public abstract class Task implements Completable, Comparable<Task>, Serializable {
 
     private String title;
     private CategoryOptions category;
-    private String date;
+    private LocalDate date;
+
+    LocalDate today = LocalDate.now();
+
+    public int periodMonths() {
+        Period period = Period.between(today, date);
+        return period.getMonths();
+    }
+
+    public int periodDays() {
+        Period period = Period.between(today, date);
+        return period.getDays();
+    }
 
     protected Task() {
     }
-
 
     public String getTitle() {
         return title;
@@ -27,15 +41,15 @@ public abstract class Task implements Completable, Comparable<Task> {
         this.category = CategoryOptions.valueOf(category);
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    protected Task(String title, CategoryOptions category, String date) {
+    protected Task(String title, CategoryOptions category, LocalDate date) {
         this.title = title;
         this.category = category;
         this.date = date;

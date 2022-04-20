@@ -7,6 +7,7 @@ import by.gramadsky.task_manager.model.OneTimeTask;
 import by.gramadsky.task_manager.model.PriorityLevel;
 import by.gramadsky.task_manager.model.RepeatableTask;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import static by.gramadsky.task_manager.util.TaskUtility.taskList;
@@ -56,9 +57,9 @@ public class TaskCreator {
         return SCANNER.nextLine();
     }
 
-    private static String getDate() {
-        System.out.println("Date of completion: ");
-        return SCANNER.nextLine();
+    private static LocalDate getDate() {
+        System.out.println("Date (yyyy-mm-dd): ");
+        return LocalDate.parse(SCANNER.nextLine());
     }
 
     private static String getPriorityLevel() {

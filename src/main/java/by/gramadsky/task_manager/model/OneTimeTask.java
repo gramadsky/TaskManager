@@ -1,8 +1,10 @@
 package by.gramadsky.task_manager.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class OneTimeTask extends Task {
+public class OneTimeTask extends Task implements Serializable {
 
     private PriorityLevel priority;
 
@@ -19,7 +21,7 @@ public class OneTimeTask extends Task {
         return priority;
     }
 
-    public OneTimeTask(String title, CategoryOptions category, String date, PriorityLevel priority) {
+    public OneTimeTask(String title, CategoryOptions category, LocalDate date, PriorityLevel priority) {
         super(title, category, date);
         this.priority = priority;
     }
@@ -27,7 +29,7 @@ public class OneTimeTask extends Task {
     @Override
     public String toString() {
         return super.toString() +
-                "priority: " + priority.toString().toLowerCase() + "\n";
+                "priority: " + priority.toString().toLowerCase();
     }
 
     @Override
